@@ -22,7 +22,7 @@ export default function WalletPage() {
   return (
     <AppLayout>
       <div className="container py-6 space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center gap-6">
           <h1 className="text-2xl font-bold">Minha Carteira</h1>
           <Button onClick={handleAdicionarFundos} className="gap-2">
             <Plus className="h-4 w-4" />
@@ -37,7 +37,9 @@ export default function WalletPage() {
           </CardHeader>
           <CardContent>
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold">{formatCurrency(saldoAtual)}</span>
+              <span className="text-3xl font-bold">
+                {formatCurrency(saldoAtual)}
+              </span>
               <span className="text-sm text-muted-foreground">
                 {saldoAtual >= 0 ? "Saldo positivo" : "Saldo negativo"}
               </span>
@@ -58,7 +60,10 @@ export default function WalletPage() {
             ) : (
               <div className="space-y-4">
                 {transacoesRecentes.map((transacao) => (
-                  <div key={transacao.id} className="flex items-center justify-between">
+                  <div
+                    key={transacao.id}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center gap-3">
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-full ${
@@ -76,9 +81,13 @@ export default function WalletPage() {
                       <div>
                         <p className="font-medium">{transacao.descricao}</p>
                         <p className="text-sm text-muted-foreground">
-                          {format(new Date(transacao.data), "dd MMM yyyy 'às' HH:mm", {
-                            locale: ptBR,
-                          })}
+                          {format(
+                            new Date(transacao.data),
+                            "dd MMM yyyy 'às' HH:mm",
+                            {
+                              locale: ptBR,
+                            }
+                          )}
                         </p>
                       </div>
                     </div>

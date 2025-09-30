@@ -44,12 +44,12 @@ export default function PerfilPage() {
   const onSubmit = async (data: ProfileFormValues) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
       atualizarUsuario({
         ...usuario,
         ...data,
       });
-      
+
       toast.success("Perfil atualizado com sucesso!");
       setIsEditing(false);
     } catch (error) {
@@ -68,7 +68,7 @@ export default function PerfilPage() {
   return (
     <AppLayout>
       <div className="container py-6 space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between ml-6 mr-3">
           <h1 className="text-2xl font-bold">Meu Perfil</h1>
           <Button
             variant={isEditing ? "outline" : "default"}
@@ -92,7 +92,7 @@ export default function PerfilPage() {
         <Card>
           <CardContent className="pt-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-              <div className="flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
+                            <div className="flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
                 <div className="relative">
                   <Avatar className="h-24 w-24">
                     <AvatarImage src={usuario.avatar} alt={usuario.nome} />
@@ -109,7 +109,9 @@ export default function PerfilPage() {
                         className="h-8 w-8 rounded-full"
                         onClick={() => {
                           // Lógica para alterar a foto
-                          const newAvatar = prompt("Cole a URL da nova foto de perfil:");
+                          const newAvatar = prompt(
+                            "Cole a URL da nova foto de perfil:"
+                          );
                           if (newAvatar) {
                             atualizarUsuario({ ...usuario, avatar: newAvatar });
                           }
@@ -183,15 +185,21 @@ export default function PerfilPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">ID do Usuário</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  ID do Usuário
+                </p>
                 <p className="font-mono text-sm">{usuario.id}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Tipo de Conta</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Tipo de Conta
+                </p>
                 <p>{usuario.papel}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Membro desde</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Membro desde
+                </p>
                 <p>{new Date().toLocaleDateString("pt-BR")}</p>
               </div>
             </CardContent>

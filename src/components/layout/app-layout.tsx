@@ -35,7 +35,7 @@ export function AppLayout({ children, showBottomNav = true }: AppLayoutProps) {
 
   return (
     <div {...handlers}>
-      <main className="flex-1 pb-24 md:pb-0">{children}</main>
+            <main className="flex-1 pb-24 pt-[env(safe-area-inset-top)] md:pb-0">{children}</main>
       {showBottomNav && <BottomNav />}
     </div>
   );

@@ -12,9 +12,9 @@ export default function DashboardPage() {
 
   return (
     <AppLayout>
-      <div className="container py-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Minhas Solicitações</h1>
+      <div className=" container py-6">
+        <div className="mb-6 flex items-center justify-center gap-6">
+          <h1 className=" text-2xl font-bold">Minhas Solicitações</h1>
           <Button asChild>
             <Link href="/solicitacoes/nova" className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
@@ -23,7 +23,7 @@ export default function DashboardPage() {
           </Button>
         </div>
 
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {solicitacoes.length === 0 ? (
             <Card>
               <CardContent className="flex flex-col items-center justify-center py-12 text-center">
@@ -31,7 +31,10 @@ export default function DashboardPage() {
                   Você ainda não tem nenhuma solicitação.
                 </p>
                 <Button asChild>
-                  <Link href="/solicitacoes/nova" className="flex items-center gap-2">
+                  <Link
+                    href="/solicitacoes/nova"
+                    className="flex items-center gap-2"
+                  >
                     <Plus className="h-4 w-4" />
                     <span>Criar primeira solicitação</span>
                   </Link>
@@ -40,18 +43,23 @@ export default function DashboardPage() {
             </Card>
           ) : (
             solicitacoes.map((solicitacao) => (
-              <Link key={solicitacao.id} href={`/solicitacoes/${solicitacao.id}`}>
+              <Link
+                key={solicitacao.id}
+                href={`/solicitacoes/${solicitacao.id}`}
+              >
                 <Card className="transition-colors hover:bg-accent/50">
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{solicitacao.item.titulo}</CardTitle>
+                      <CardTitle className="text-lg">
+                        {solicitacao.item.titulo}
+                      </CardTitle>
                       <span className="text-sm text-muted-foreground">
                         {new Date(solicitacao.criadoEm).toLocaleDateString()}
                       </span>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex items-center justify-between">
+                    <div className=" flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">
                         {solicitacao.tipo}
                       </span>
