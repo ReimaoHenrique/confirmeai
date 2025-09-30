@@ -1,20 +1,18 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if user is logged in
-    // In a real app, you would check auth token or user state
     const isAuthenticated = true; // Set to false to test the auth flow
 
     if (isAuthenticated) {
-      router.push('/dashboard');
+      router.push("/dashboard");
     } else {
-      router.push('/auth/entrar');
+      router.push("/auth/entrar");
     }
   }, [router]);
 
